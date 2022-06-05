@@ -21,7 +21,7 @@ import retrofit2.Response
 
 const val TAG = "MainActivity"
 
-@AndroidEntryPoint
+//@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -32,6 +32,8 @@ class MainActivity : AppCompatActivity() {
 
 //    private val viewModel: RestaurantViewModel by viewModels()
 
+    private lateinit var homeFrag:RestaurantListFrag
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -39,11 +41,18 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        homeFrag = RestaurantListFrag()
+        supportFragmentManager.beginTransaction()
+            .add(R.id.fragment_container,homeFrag,"HOME")
+            .commit()
+
         //set up viewModel
-        viewModel = ViewModelProvider(this).get(RestaurantViewModel::class.java)
+//        viewModel = ViewModelProvider(this).get(RestaurantViewModel::class.java)
 
-        binding.textviewTest.text = viewModel.word
-
+//        binding.textviewTest.text = viewModel.word
+//        CoroutineScope(Dispatchers.IO).launch {
+//            withContext(Dispatchers.Main) {
+//                val res = viewModel.repository } }
 
 
 

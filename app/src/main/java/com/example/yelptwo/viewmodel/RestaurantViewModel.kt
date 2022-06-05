@@ -1,5 +1,6 @@
 package com.example.yelptwo.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.yelptwo.models.Business
@@ -10,18 +11,22 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltViewModel
-class RestaurantViewModel @Inject constructor( private val repository: RestaurantRepository): ViewModel() {
+const val TAG ="viewmodel"
+//@HiltViewModel
+//class RestaurantViewModel @Inject constructor( private val repository: RestaurantRepository): ViewModel() {
+class RestaurantViewModel (): ViewModel() {
 
+    val repository = RestaurantRepository()
 
     private val flow  = MutableStateFlow<List<Business>>(emptyList())
     val businesses :Flow<List<Business>> = flow
-
     init {
-
+//
         viewModelScope.launch {
             val restaurants = repository.getRestaurants()
-            flow.value= restaurants
+            flow.value = restaurants
+//            Log.i(TAG, "view model: $restaurants ")
+//            flow.value= restaurants
 
         }
     }
