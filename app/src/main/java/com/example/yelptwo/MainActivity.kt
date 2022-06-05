@@ -13,10 +13,8 @@ import com.example.yelptwo.api.RetrofitService.Companion.API_KEY
 import com.example.yelptwo.databinding.ActivityMainBinding
 import com.example.yelptwo.viewmodel.RestaurantViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.collect
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -46,28 +44,33 @@ class MainActivity : AppCompatActivity() {
 
         binding.textviewTest.text = viewModel.word
 
+
+
+
         //reference to retrofit
-        val service = RetrofitFactory.retrofitService
+//        val service = RetrofitFactory.retrofitService
 
         //extra corotine
-        lifecycleScope.launch(Dispatchers.IO){
 
-        }
 
         //IO coroutine to call retrofit from
-        CoroutineScope(Dispatchers.IO).launch {
-            val ser=  service.searchRestuarants("Bearer $API_KEY", "avocado", "New York")
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val ser=  service.searchRestuarants()
 
 
-            val v = ser.body()
+//            val v = ser.body()
 
 
-            Log.i(TAG, "onCreate 2: ${ser}")
-            Log.i(TAG, "onCreate 2: ${ser.body()}")
-            withContext(Dispatchers.Main){
 
-            }
-        }
+//            Log.i(TAG, "onCreate 2: ${ser}")
+//            Log.i(TAG, "onCreate 2: ${ser.body()}")
+//            withContext(Dispatchers.Main){
+//                var text = binding.textviewTest
+//                viewModel.businesses.collect { business ->
+//                    text.text = business[0].name
+//                }
+//            }
+//        }
 
 //start of old method of calling retrofit.
 //        val response = YelpApi.retrofitService.searchRestuarants("Bearer $API_KEY", "avocado", "New York").enqueue(object: Callback<Any>{

@@ -1,6 +1,7 @@
 package com.example.yelptwo.api
 
 import com.example.yelptwo.models.YelpResponse
+import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -16,9 +17,9 @@ interface RetrofitService {
 
     @GET("businesses/search")
     suspend fun searchRestuarants(
-        @Header("Authorization") autheader:String,
-        @Query("term") searchTerm:String,
-        @Query("location") location:String,
+        @Header("Authorization") autheader:String = "Bearer $API_KEY",
+        @Query("term") searchTerm:String = "Avocado",
+        @Query("location") location:String = "New York",
         @Query("offset") offset:Int? = null
     ): Response<YelpResponse>
 }
