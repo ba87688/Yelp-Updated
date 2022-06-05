@@ -3,12 +3,14 @@ package com.example.yelptwo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.example.yelptwo.api.RetrofitFactory
 import com.example.yelptwo.api.RetrofitService
 import com.example.yelptwo.api.RetrofitService.Companion.API_KEY
 
 import com.example.yelptwo.databinding.ActivityMainBinding
+import com.example.yelptwo.viewmodel.RestaurantViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,6 +25,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
 
+    //viewmodel reference
+    lateinit var viewModel:RestaurantViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +36,10 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //set up viewModel
+        viewModel = ViewModelProvider(this).get(RestaurantViewModel::class.java)
 
+        binding.textviewTest.text = viewModel.word
 
         //reference to retrofit
         val service = RetrofitFactory.retrofitService
