@@ -28,4 +28,16 @@ class RestaurantRepository() {
         return mutableListOf()
 
     }
+
+
+    suspend fun searchRestaurants2(query:String): List<Business> {
+
+        val response = service.getBreakingRestaurants2(searchTerm = query)
+        val businesses = response.businesses
+        return businesses
+
+
+        return mutableListOf()
+
+    }
 }

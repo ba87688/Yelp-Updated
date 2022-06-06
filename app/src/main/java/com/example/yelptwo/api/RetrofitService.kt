@@ -31,4 +31,14 @@ interface RetrofitService {
         @Query("location") location: String = "New York"
 //        @Query("offset") offset:Int? = null
     ): Response<YelpResponse>
+
+    @GET("businesses/search")
+    suspend fun getBreakingRestaurants2(
+        @Header("Authorization") autheader: String = "Bearer $API_KEY",
+        @Query("term") searchTerm: String ,
+        @Query("location") location: String = "New York"
+//        @Query("offset") offset:Int? = null
+    ): YelpResponse
+
+
 }

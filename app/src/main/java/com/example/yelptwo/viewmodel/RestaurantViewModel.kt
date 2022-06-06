@@ -8,6 +8,7 @@ import com.example.yelptwo.repository.RestaurantRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -33,6 +34,20 @@ class RestaurantViewModel() : ViewModel() {
         }
     }
 
+    suspend fun newSearch(query:String):List<Business>{
+        return repository.searchRestaurants2(query)
+    }
+
+//    private val currentQuery = MutableStateFlow<String?>(null)
+//
+//
+//
+//    val searchResults = currentQuery.flatMapLatest { query->
+//        repository.getBreakingRestaurants2(query.toString())
+//    }
+//    fun onSearchQuerySubmit(query:String){
+//        currentQuery.value = query
+//    }
     val word = "list"
 
 
