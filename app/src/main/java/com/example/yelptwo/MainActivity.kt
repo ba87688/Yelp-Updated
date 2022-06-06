@@ -28,11 +28,11 @@ class MainActivity : AppCompatActivity() {
 
 
     //viewmodel reference
-    lateinit var viewModel:RestaurantViewModel
+    lateinit var viewModel: RestaurantViewModel
 
 //    private val viewModel: RestaurantViewModel by viewModels()
 
-    private lateinit var homeFrag:RestaurantListFrag
+    private lateinit var homeFrag: RestaurantListFrag
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
         homeFrag = RestaurantListFrag()
         supportFragmentManager.beginTransaction()
-            .add(R.id.fragment_container,homeFrag,"HOME")
+            .add(R.id.fragment_container, homeFrag, "HOME")
             .commit()
 
         //set up viewModel
@@ -53,7 +53,6 @@ class MainActivity : AppCompatActivity() {
 //        CoroutineScope(Dispatchers.IO).launch {
 //            withContext(Dispatchers.Main) {
 //                val res = viewModel.repository } }
-
 
 
         //reference to retrofit
@@ -68,7 +67,6 @@ class MainActivity : AppCompatActivity() {
 
 
 //            val v = ser.body()
-
 
 
 //            Log.i(TAG, "onCreate 2: ${ser}")
@@ -98,13 +96,6 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
-
-
-
-
-
-
 
 
 }

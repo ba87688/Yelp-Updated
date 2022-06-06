@@ -6,9 +6,10 @@ import androidx.recyclerview.widget.ListAdapter
 import com.example.yelptwo.databinding.ItemRestaurantBinding
 import com.example.yelptwo.models.Business
 
-class RestaurantAdapter : ListAdapter<Business, RestaurantViewHolder> (RestaurantComparator()){
+class RestaurantAdapter : ListAdapter<Business, RestaurantViewHolder>(RestaurantComparator()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantViewHolder {
-        val binding = ItemRestaurantBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        val binding =
+            ItemRestaurantBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return RestaurantViewHolder(binding)
     }
 

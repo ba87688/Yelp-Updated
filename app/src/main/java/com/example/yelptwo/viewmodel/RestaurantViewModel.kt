@@ -11,15 +11,17 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-const val TAG ="viewmodel"
+const val TAG = "viewmodel"
+
 //@HiltViewModel
 //class RestaurantViewModel @Inject constructor( private val repository: RestaurantRepository): ViewModel() {
-class RestaurantViewModel (): ViewModel() {
+class RestaurantViewModel() : ViewModel() {
 
     val repository = RestaurantRepository()
 
-    private val flow  = MutableStateFlow<List<Business>>(emptyList())
-    val businesses :Flow<List<Business>> = flow
+    private val flow = MutableStateFlow<List<Business>>(emptyList())
+    val businesses: Flow<List<Business>> = flow
+
     init {
 //
         viewModelScope.launch {
@@ -30,6 +32,7 @@ class RestaurantViewModel (): ViewModel() {
 
         }
     }
+
     val word = "list"
 
 

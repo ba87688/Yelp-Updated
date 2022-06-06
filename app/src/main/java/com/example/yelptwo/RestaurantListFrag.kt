@@ -11,35 +11,33 @@ import com.example.yelptwo.shared.RestaurantAdapter
 import com.example.yelptwo.viewmodel.RestaurantViewModel
 import kotlinx.coroutines.flow.collect
 
-class RestaurantListFrag:Fragment(R.layout.restaurant_list_frag) {
+class RestaurantListFrag : Fragment(R.layout.restaurant_list_frag) {
 
-    private val viewModel:RestaurantViewModel by viewModels()
+    private val viewModel: RestaurantViewModel by viewModels()
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         val binding = RestaurantListFragBinding.bind(view)
-        val restaurantAdapter =RestaurantAdapter()
+        val restaurantAdapter = RestaurantAdapter()
 
         binding.apply {
             rvFrag.apply {
-                adapter= restaurantAdapter
+                adapter = restaurantAdapter
                 layoutManager = LinearLayoutManager(requireContext())
                 setHasFixedSize(true)
             }
 
             viewLifecycleOwner.lifecycleScope.launchWhenCreated {
-                viewModel.businesses.collect {businesses->
+                viewModel.businesses.collect { businesses ->
                     restaurantAdapter.submitList(businesses)
 
                 }
             }
 
 
-
         }
-
 
 
     }

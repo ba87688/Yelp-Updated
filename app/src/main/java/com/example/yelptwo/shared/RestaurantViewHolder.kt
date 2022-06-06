@@ -9,10 +9,11 @@ import com.example.yelptwo.databinding.ItemRestaurantBinding
 import com.example.yelptwo.models.Business
 import java.security.AccessController.getContext
 
-class RestaurantViewHolder (private val binding: ItemRestaurantBinding): RecyclerView.ViewHolder(binding.root) {
+class RestaurantViewHolder(private val binding: ItemRestaurantBinding) :
+    RecyclerView.ViewHolder(binding.root) {
 
 
-    fun bind(restaurant: Business){
+    fun bind(restaurant: Business) {
         binding.apply {
             tvName.text = restaurant.name
             tvName.text = restaurant.name
@@ -25,7 +26,8 @@ class RestaurantViewHolder (private val binding: ItemRestaurantBinding): Recycle
             Glide.with(itemView).load(restaurant.imageUrl).apply(
                 RequestOptions().transform(
                     CenterCrop(), RoundedCorners(20)
-                )).into(imageView)
+                )
+            ).into(imageView)
 
 
         }
