@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 class RestaurantListFrag : Fragment(R.layout.restaurant_list_frag) {
 
     private val viewModel: RestaurantViewModel by viewModels()
-    val restaurantAdapter = RestaurantAdapter()
+    private val restaurantAdapter = RestaurantAdapter()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -70,9 +70,9 @@ class RestaurantListFrag : Fragment(R.layout.restaurant_list_frag) {
            val rep = RestaurantRepository()
 
            viewLifecycleOwner.lifecycleScope.launch {
-               val r =viewModel.newSearch(query)
+               val restaurants =viewModel.newSearch(query)
 //               val r =rep.searchRestaurants2(query)
-               restaurantAdapter.submitList(r)
+               restaurantAdapter.submitList(restaurants)
            }
            searchView.clearFocus()
        }
