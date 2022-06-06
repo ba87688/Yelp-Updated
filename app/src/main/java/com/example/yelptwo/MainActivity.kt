@@ -3,6 +3,8 @@ package com.example.yelptwo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -96,6 +98,5 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-
 
 }

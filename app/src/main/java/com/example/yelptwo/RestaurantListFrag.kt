@@ -1,6 +1,8 @@
 package com.example.yelptwo
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -16,6 +18,11 @@ class RestaurantListFrag : Fragment(R.layout.restaurant_list_frag) {
     private val viewModel: RestaurantViewModel by viewModels()
 
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -39,6 +46,12 @@ class RestaurantListFrag : Fragment(R.layout.restaurant_list_frag) {
 
         }
 
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu,menu)
+        super.onCreateOptionsMenu(menu, inflater)
 
     }
 }
